@@ -1,0 +1,36 @@
+{%extends "layout.html"%}
+
+{%block content%}
+
+<div class="userinfo">
+    <img src="{{ image_file }}" class="profilepic"/>
+    <br><br>
+    Username : {{ current_user.username }}
+    <br/>
+    Email ID : {{ current_user.email }}
+    <br/>
+    Date of Birth : {{ current_user.dob }}
+    <br/>
+    Mobile Number: {{ current_user.mobile }}
+    <br/>
+</div>
+<div class="scrol" style="position: fixed;">
+    {% if classes%}
+        <h3>Classes that you are a member of :</h3> 
+            <br/><br>
+            <ul>
+                {% for c in classes %} 
+                    <li>Class Name :{{ c.name }} 
+                    <br>
+                    Class Teacher Name : {{ c.teacher }}
+                    </li> 
+                    <br/><br>
+                {% endfor %}
+            </ul>
+        {% else %}
+            You have not enrolled in any class
+            <br/>
+    {% endif %}
+</div>
+
+{%endblock content%}

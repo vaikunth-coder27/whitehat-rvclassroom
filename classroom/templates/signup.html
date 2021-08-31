@@ -1,0 +1,105 @@
+{%extends "layout.html"%}
+
+{%block content%}
+<div class="intro">
+    <form method="POST" class="forms">
+        {{ form.hidden_tag() }}
+    
+        <!--{{ form.email.label }}-->
+        {% if form.email.errors %}
+            {{ form.email(style='border-bottom-color:red;') }} 
+            <span style="font-size: small; color: red;">
+                {% for error in form.email.errors %}
+                {%if error%}
+                    {{ error }}
+                    {%endif%}
+                {% endfor %}
+            </span>
+        {% else %}
+            {{ form.email(placeholder='Email-ID') }}
+        {% endif %}
+        <br/><br/>
+
+        <!--{{ form.username.label }}-->
+        {% if form.username.errors %}
+            {{ form.username(style='border-color:red;') }} 
+            <span style="font-size: small; color: red;">
+                {% for error in form.username.errors %}
+                {%if error%}
+                    {{ error }}
+                    {%endif%}
+                {% endfor %}
+            </span>
+        {% else %}
+            {{ form.username(placeholder='Username') }}
+        {% endif %}
+        <br/><br/>
+        <!--{{ form.dob.label }}    -->
+        {% if form.dob.errors %}
+            {{ form.dob(style='border-color:red;', class='datepicker') }} 
+            <span style="font-size: small; color: red;">
+                {% for error in form.dob.errors %}
+                {%if error%}
+                    {{ error }}
+                    {%endif%}
+                {% endfor %}
+            </span>
+        {% else %}
+            {{ form.dob(class='datepicker',placeholder='DOB') }}
+        {% endif %}
+        <p style="font-size: small;">D.O.B</p>
+        <!--{{ form.mobile.label }}-->
+        {% if form.mobile.errors %}
+            {{ form.mobile(style='border-color:red;') }} 
+            <span style="font-size: small; color: red;">
+                {% for error in form.mobile.errors %}
+                {%if error%}
+                    {{ error }}
+                    {%endif%}
+                {% endfor %}
+            </span>
+        {% else %}
+            {{ form.mobile(placeholder='Mobile Number') }}
+        {% endif %}
+        <br/><br/>
+        
+        <!--{{ form.password.label }}-->
+        {% if form.password.errors %}
+            {{ form.password(style='border-color:red;') }} 
+            <span style="font-size: small; color: red;">
+                {% for error in form.password.errors %}
+                {%if error%}
+                    {{ error }}
+                    {%endif%}
+                {% endfor %}
+            </span>
+        {% else %}
+            {{ form.password(placeholder='Password') }}
+        {% endif %}
+        <br/><br/>
+        <!--{{ form.confirm_password.label }}-->
+        {% if form.confirm_password.errors %}
+            {{ form.confirm_password(style='border-color:red;') }} 
+            <span style="font-size: small; color: red;">
+                {% for error in form.confirm_password.errors %}
+                {%if error%}
+                    {{ error }}
+                    {%endif%}
+                {% endfor %}
+            </span>
+        {% else %}
+            {{ form.confirm_password(placeholder=('Confirm Password')) }}
+        {% endif %}
+        <br/><br/>
+
+        {{ form.submit }}
+        <br/><br/>
+        
+    </form>
+    <small class="text-muted" style="margin-left: 25%; font-size: 20px;">
+        Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
+    </small>
+    
+</div>
+
+{%endblock content%}

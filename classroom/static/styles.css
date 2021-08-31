@@ -1,0 +1,285 @@
+.intro {
+    padding: 2% 2% 2% 2%;
+    border-radius: 15px;
+    border: none;
+    position: fixed;
+    margin-left: 30%;
+    box-shadow:  0 3px  rgb(0, 0, 0);
+    background-color: rgb(197, 243, 255);
+    
+    color: black;
+    height: 80%;
+    width: 45%;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.intro1{
+    padding: 2% 2% 2% 2%;
+    border-radius: 15px;
+    position: fixed;
+    margin-left: 30%;
+    box-shadow:  0 3px  rgb(0, 0, 0);
+    background-image: url('images/logo.jpg');
+    background-repeat:inherit;
+    
+    color: black;
+    height: 80%;
+    width: 45%;
+    align-items: center;
+    justify-content: center;
+}
+
+.button {
+    background-image: linear-gradient(to right, rgb(133, 255, 235) , rgb(227, 255, 163));
+    border-style: solid;
+    width: 40%;
+    border-radius: 5px;
+    position: fixed;
+    margin-top: 20%;
+    font-size: 200%;
+    color: blue;
+    transition: all 0.4s;
+}
+.button:hover{
+    background-image: linear-gradient(to left, rgb(133, 255, 235) , rgb(227, 255, 163));
+}
+
+.forms{
+    margin-left: 10%;
+    border: 0;
+    outline: none;
+    font-size: x-large;
+}
+
+input{
+    border: none;
+    border-bottom-style: solid;
+    background-color: rgb(197, 243, 255);
+    transition: all 0.4s;
+    
+}
+input:focus{
+    outline: none;
+    border-bottom-color: rgb(56, 165, 255);
+}
+
+input[type=submit]{
+    background-image: linear-gradient(to right, rgb(133, 255, 235) , rgb(227, 255, 163));
+    border-style: solid;
+    width: 30%;
+    border-radius: 5px;
+    position: fixed;
+    font-size: 100%;
+    color: blue;
+    transition: all 0.4s;
+}
+input[type=submit]:hover{
+    background-image: linear-gradient(to left, rgb(133, 255, 235) , rgb(227, 255, 163));
+}
+
+
+.navbar {
+    list-style-type: none;
+    background-color: rgb(251, 255, 0);
+    height: 20px;
+    justify-content: space-between;
+    position: static;
+    top: 0;
+}
+
+.navbar ul{
+    float: right;
+}
+
+.navbar li{
+    display: inline;
+    text-decoration: none;
+}
+
+.navbar li a{
+    text-decoration: none;
+}
+
+.navbar li ion-icon{
+    font-size: 3em;
+}
+
+#menu-icon{
+    cursor: pointer;
+}
+
+.menu{
+    background-color: rgb(104, 235, 148);
+    color: white;
+    display: none;
+    margin-right: 90%;
+    margin-left: 4%;
+    border-radius: 3px;
+    font-size: 4em;
+    transition: .3s;
+    opacity: 0.7;
+    position: fixed;
+    z-index: 100;
+}
+
+.menu ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 5px; 
+}
+
+.menu ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+.menu ul li a ion-icon{
+    pointer-events: none;
+}
+
+
+.right-menu{
+    display: none;
+    transition: 0.4s;
+    float: right;
+    background-color: rgb(104, 235, 148);
+    margin-right: 3%;
+    margin-left: 90%;
+    font-size: 25px;
+    position: fixed;
+    z-index: 100;
+    padding: 1%;
+    border-radius: 20px;
+}
+
+.right-menu ul{
+    list-style: none;
+    margin: 0;
+    padding: 1%;
+}
+
+.right-menu ul li{
+    padding: 1%;
+}
+
+.right-menu ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+.flash-message{
+    position: fixed;
+    margin-left: 70%;
+    margin-top: 2%;
+    animation: fadeinout 4s linear 1 forwards;
+    z-index: 20;
+}
+
+@keyframes fadeinout {
+    0% { opacity: 0; }
+    2% { opacity: 1; }
+    85% {opacity: 0.9;}
+    100% { opacity: 0; }
+}
+
+@keyframes fadein {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeout {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+
+/*###################################################  dashboard   #########################################*/
+
+.classenrolled{
+    padding: 2% 2% 2% 2%;
+    border-radius: 15px;
+    border: none;
+    position: fixed;
+    margin-left: 2%;
+    box-shadow:  0 3px  rgb(0, 0, 0);
+    background-color: rgb(197, 243, 255);
+    overflow: hidden;
+    color: black;
+    height: 80%;
+    width: 85%;
+    display:grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 10px;
+}
+
+.classenrolled>div{
+    text-align: center;
+    background-color:rgb(92, 184, 56);
+    font-size: large;
+    border-radius: 15px;
+}
+.classenrolled>div:hover{
+    box-shadow: 5px 5px rgb(92, 184, 56);
+}
+
+.add{
+    top: 0;
+    margin-left: 90%;
+    font-size: large;
+    background-color:crimson;
+    padding: 10px;
+    border-radius: 15px 0px 0px 15px;
+
+}
+.add:hover{
+    box-shadow: 5px 5px crimson;
+}
+
+.add button{
+    background-color: aqua;
+    border-radius:  15px 0px 0px 15px;
+
+}
+.add button:hover{
+    box-shadow: 3px 3px aqua;
+}
+
+.add ion-icon{
+    font-size: 3em;
+    pointer-events: none;
+}
+.userinfo{
+    margin-left: 2%;
+}
+
+.scrol {
+    padding: 2% 2% 2% 2%;
+    border-radius: 15px;
+    border: none;
+    width: 45%;
+    height: 600px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+    margin-left: 30%;
+    box-shadow:  0 3px  rgb(0, 0, 0);
+    background-color: rgb(197, 243, 255);
+    
+    color: black;
+    align-items: center;
+    justify-content: center;
+}
+
+/*########################################## account info #############################*/
+.userinfo{
+    position: fixed;
+    font-size: large;
+    margin-left: 5%;
+}
+.profilepic{
+    border-radius: 15px 0px 0px 15px;
+    z-index: 200;
+}
+  

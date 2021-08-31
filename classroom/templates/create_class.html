@@ -1,0 +1,25 @@
+{%extends "layout.html"%}
+
+{%block content%}
+<div class="intro">
+    <form method="POST" class="forms">
+        {{ form.hidden_tag() }}
+    
+        <!--{{ form.name.label }} -->
+        {% if form.name.errors %}
+            {{ form.name(style='border-color:red;') }} 
+            <div class="invalid-feedback">
+                {% for error in form.name.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.name(placeholder="Class Name") }}
+        {% endif %}
+        <br/><br/>
+
+        {{ form.submit }}
+        <br/><br/>
+    </form>
+</div>
+{%endblock content%}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        {% if title %}
+            {{title}}
+        {% else %}
+            ClassRoom
+        {% endif %}
+    </title>
+     <!-- add icon link -->
+     <link rel="icon" href="{{ url_for('static', filename='logo.jpg')}}" type="image/x-icon">
+
+    <!--Custom CSS Files-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    
+    <!--Custom JS Files-->
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <!--For https://ionic.io/ionicons-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+    <style>
+        {% block style %}
+        {% endblock style %}
+    </style>
+
+    <script>
+        {% block script %}
+        {% endblock script %}
+    </script>
+</head>
+
+<body style="background-color:#fcba03;">
+    
+    <!--Nav Bar
+        Logo - home page
+        Hamberger menu - open menus with ' assignment, etc..'
+
+        Profile Photo - with menu
+        Settings
+        Notification
+        -->
+        <div class="navbar">
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('dashboard') }}">
+                    <ion-icon name="home-outline" style="font-size: 3em;margin-left: 1%;"></ion-icon>
+                </a>
+            {% else %}
+            <a href="{{ url_for('home') }}"><ion-icon name="home-outline" style="font-size: 3em;margin-left: 1%;"></ion-icon></a>
+            {% endif %}
+
+            <ul>
+                {% if current_user.is_authenticated %}
+                    <li><a href=""><img src=""/></a></li>
+                    <li>
+                        <a onclick="toggle_menu_right()" id="menu-icon">
+                            <ion-icon name="person" style="cursor: pointer;z-index: 100;"></ion-icon>
+                        </a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{{ url_for('signup') }}" title="sign up">
+                        <ion-icon name="person" ></ion-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('login') }}" title='login'>
+                        <ion-icon name="finger-print-outline"></ion-icon>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+        
+        {% if current_user.is_authenticated %}    
+            <div class="right-menu" id="right-menu">
+                <ul>
+                    <li><a href="{{ url_for('account') }}">Account</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                </ul>
+            </div>
+        {% endif %}
+
+
+        <div class="flash-message">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message }}
+                </div>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+        
+    {%block content%}
+    {%endblock content%}
+</body>
+</html>

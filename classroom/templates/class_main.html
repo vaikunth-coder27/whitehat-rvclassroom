@@ -1,0 +1,101 @@
+{%extends 'layout.html'%}
+
+{% block style%}
+
+div.scroll {
+    margin:4px, 4px;
+    padding:4px;
+    width: 500px;
+    height: 300px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+}
+
+.class_detail{
+    padding: 2% 2% 2% 2%;
+    border-radius: 15px;
+    border: none;
+    width: 20%;
+    height: 200px;
+    margin-left: 5%;
+    box-shadow:  0 3px  rgb(0, 0, 0);
+    background-color: rgb(197, 243, 255);
+    
+    color: black;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    text-align: center;
+
+}
+{% endblock style%}
+
+{%block content%}
+
+<!--For the hamberger menu-->
+<!--#########################################################################-->
+<div style="margin-left: 1%;">
+    <a onclick="toggle_menu()" id="menu-icon"><ion-icon name="grid-outline" style="position: absolute; font-size: 3em;"></ion-icon></a>
+</div>
+
+<div class="menu" id="menubar">
+    <ul>
+        <li>
+            <a href="{{ url_for('classroom_home', id=id) }}">
+                <ion-icon name="book-outline"></ion-icon>
+            </a>
+        </li>
+        <li>
+            <a href="{{ url_for('assignments', id=id) }}">
+                <ion-icon name="create-outline"></ion-icon>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+<!--#########################################################################-->
+
+
+<div class="class_detail">
+    <h3>{{ cls.name }}</h3> <small>{{ cls.id }}</small>
+    <br/>
+    Created By : {{ cls.teacher }}
+    
+</div>
+
+<div>
+    <div class="scrol">
+        {% for index in range(msgs|length) %}
+        {% set i = msgs[index] %}
+        <div class="post">
+            <span>
+                {{i[0]}}
+            </span>
+            <br>
+            <span style="font-size: large;">
+                {% if 'Assignment' in i[1] %}
+                {% set asgn = i[1][i[1].index('Assignment')+10:] %}
+                    {{ i[1][0:i[1].index('Assignment')+10] }}
+                    <a href="{{ url_for('view_assignment', id=id, asgn_id=asgn_ids[index]) }}"> {{ asgn }} </a>
+                {% else %}
+                    {{i[1]}}
+                {% endif %}
+            </span>
+        </div>   
+        <br> <br>
+        {%endfor%}
+        {%for i in assign_ids%}
+        {{i}}
+        {%endfor%}
+    </div>
+    <div style="position: fixed;bottom: 0;margin-bottom: 2%;margin-left: 37%;">
+        <form method="POST" id="myForm">
+            
+            <input type="text" name='msgbox' placeholder="enter your message here!" style="width: 350px; height: 30px;">
+            <input type="submit" value="send" style="width: 100px; height: 30px;"/>
+        </form>
+    </div>
+
+</div>
+{%endblock content%}

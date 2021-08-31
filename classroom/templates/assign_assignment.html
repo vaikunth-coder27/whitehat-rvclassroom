@@ -1,0 +1,52 @@
+{%extends "layout.html"%}
+
+{%block content%}
+<div class="intro">
+    <form method="POST" class="forms">
+        {{ form.hidden_tag() }}
+    
+        <!--{{ form.title.label }} -->
+        {% if form.title.errors %}
+            {{ form.title(style='border-color:red;') }} 
+            <div class="invalid-feedback">
+                {% for error in form.title.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.title(placeholder='Title') }}
+        {% endif %}
+        <br/><br/>
+
+        <!--{{ form.description.label }}-->
+        {% if form.description.errors %}
+            {{ form.description(style='border-color:red;') }} 
+            <div class="invalid-feedback">
+                {% for error in form.description.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.description(placeholder='Desription') }}
+        {% endif %}
+        <br/><br/>
+
+        <!--{{ form.due.label }}    -->
+        {% if form.due.errors %}
+            {{ form.due(style='border-color:red;', class='datepicker') }} 
+            <div class="invalid-feedback">
+                {% for error in form.due.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.due(class='datepicker') }}
+        {% endif %}
+        <p style="font-size: x-small;">Due Date</p>
+
+        {{ form.submit }}
+        <br/><br/>
+    </form>
+</div>
+
+{%endblock content%}

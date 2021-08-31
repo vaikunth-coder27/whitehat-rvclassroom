@@ -1,0 +1,89 @@
+{%extends "layout.html"%}
+
+{% block style %}
+.assignment{
+    background-color: pink;
+    text-align: center;
+    border-radius: 15px;
+    color: black;
+}
+
+.assignment:hover{
+    box-shadow: 5px 5px crimson;
+
+}
+
+.assign_asgn{
+    padding-top: 1%;
+    border-radius: 15px;
+    border: none;
+    width: 10%;
+    height: 50px;
+    text-align:center;
+    margin-left: 85%;
+    box-shadow:  0 3px  rgb(0, 0, 0);
+    background-color: rgb(197, 243, 255);
+    position: fixed;
+    color: black;
+    bottom:0;
+    margin-bottom: 40%;
+}
+
+.assign_asgn a{
+    text-decoration: none;
+    color: black;
+}
+
+{% endblock style %}
+
+{%block content%}
+
+<!--For the hamberger menu-->
+<!--#########################################################################-->
+<div style="margin-left: 1%;">
+    <a onclick="toggle_menu()" id="menu-icon"><ion-icon name="grid-outline" style="position: absolute; font-size: 3em;"></ion-icon></a>
+</div>
+
+<div class="menu" id="menubar">
+    <ul>
+        <li>
+            <a href="{{ url_for('classroom_home', id=id) }}">
+                <ion-icon name="book-outline"></ion-icon>
+            </a>
+        </li>
+        <li>
+            <a href="{{ url_for('assignments', id=id) }}">
+                <ion-icon name="create-outline"></ion-icon>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+<!--#########################################################################-->
+
+
+
+
+<div class="scrol">
+    <ul>
+        {% for asgn in asgns%}
+            <div class="assignment">
+                <a href="{{ url_for('view_assignment', id=id, asgn_id=asgn.assignment_id) }}" style="text-decoration: none;">
+                    <h1>{{ asgn.title }}</h1>
+                    <p>{{ asgn.description }}</p>
+                    <b>Due on : {{ asgn.due }}</b>
+                </a>
+            </div>
+        {% endfor %}
+    </ul>
+</div>    
+    
+    {% if isTeacher %}
+        <div class="assign_asgn">
+            <a href="{{ url_for('assign_assignment', id=id) }}">Assign Assignment</a>
+        </div>
+    {% endif %}
+
+{%endblock content%}
+
+
